@@ -11,6 +11,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Galeria"
         tools:targetApi="31">
+
+        <provider
+            android:authorities="rodrigues.leite.galeria.fileprovider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:granUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resourse="@xml/file_paths">
+
+            </meta-data>
+        </provider>
+
         <activity
             android:name=".PhotoActivity"
             android:parentActivityName=".MainActivity" >
@@ -27,6 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
