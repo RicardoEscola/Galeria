@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     private void dispatchTakePictureIntent(){ //Quando a camera for acionada
         File f = null; //cria um arquivo vazio para adicionar a foto a seguir
         try {
-            f = createImageFile():
+            f = createImageFile();
         } catch (IOException e ){
             Toast.makeText(MainActivity.this, "Não foi possivel criar o arquivo", Toast.LENGTH_LONG).show();
             return;

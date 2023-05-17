@@ -16,10 +16,10 @@
             android:authorities="rodrigues.leite.galeria.fileprovider"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
-            android:granUriPermissions="true">
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resourse="@xml/file_paths">
+                android:resource="@xml/file_paths">
 
             </meta-data>
         </provider>
