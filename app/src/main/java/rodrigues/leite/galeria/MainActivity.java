@@ -59,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
 
         File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES); //Acessa o diretório Pictures
         File[] files = dir.listFiles();
-        for(int i = 0; i < files[i].length; i++){ //Lê as fotos salvas
-            photos.add(files[i].getAbsolutedPath()); //adiicona na lista de fotos
+        for(int i = 0; i < files[i].length(); i++){ //Lê as fotos salvas
+            photos.add(files[i].getAbsolutePath()); //adiicona na lista de fotos
         }
         mainAdapter = new MainAdapter(MainActivity. this,photos);
         RecyclerView rvGallery = findViewById(R.id.rvGallery);
         rvGallery.setAdapter(mainAdapter);
 
         float w = getResources().getDimension(R.dimen.itemWidth);
-        int numberOfColumns = Utils.calculateNoOfCollumns(MainActivity.this,w);//calcula o tanto de colunas de fotos cabem na tela
+        int numberOfColumns = Util.calculateNoOfColumns(MainActivity.this,w);//calcula o tanto de colunas de fotos cabem na tela
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, numberOfColumns);//configura o recicleview para exibir as fotos na grid respeitanto o espaço calculado acima
         rvGallery.setLayoutManager(gridLayoutManager);
     }

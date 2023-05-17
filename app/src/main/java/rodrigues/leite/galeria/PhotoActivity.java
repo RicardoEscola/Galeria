@@ -3,15 +3,19 @@ package rodrigues.leite.galeria;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.FileProvider;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
-import android.widget.Toolbar;
+
+import java.io.File;
 
 public class PhotoActivity extends AppCompatActivity {
     String photoPath;
@@ -29,11 +33,18 @@ public class PhotoActivity extends AppCompatActivity {
         Intent i = getIntent();
         photoPath = i.getStringExtra("photo_path"); //Pega o caminho da foto que veio da Main
 
-        Bitmap bitmap = Utils.getBitmap(photoPath);
+        Bitmap bitmap = Util.getBitmap(photoPath);
         ImageView imPhoto = findViewById(R.id.imPhoto);
         imPhoto.setImageBitmap(bitmap);
     }
 
+    void sharePhoto(){
+        Uri photoUri = FileProvider.getUriForFile(PhotoActivity.this,"rodrigues.leite.galeria.fileprovider",new File(photoPath));
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.putExtra(Intent.EXTRA_STREAM, photoUri);
+        i.setType("image/jpeg");
+        startActivity(i);
+    }
     public boolean onCreateOptionsMenu(Menu menu){
         super.onCreateOptionsMenu(menu);
         MenuInflater inflater = getMenuInflater();
